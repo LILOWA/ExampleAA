@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns="http://java.sun.com/xml/ns/javaee" 
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" 
+        version="2.5">
+ 
+  <display-name>AA</display-name>  
+  
+ <!--  <servlet>
+    <servlet-name>NowServlet</servlet-name>
+    <servlet-class>ez.NowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NowServlet</servlet-name>
+    <url-pattern>/now</url-pattern>
+  </servlet-mapping>    -->
+  
+  <context-param>
+  	<description>로깅 여부</description>
+  	<param-name>logEnabled</param-name>
+  	<param-value>true</param-value>
+  </context-param>
+  <context-param>
+  	<description>디버깅 레벨</description>
+  	<param-name>debugLevel</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  
+  <jsp-config>
+    <jsp-property-group>
+        <url-pattern>/JSP2/aug31/view/*</url-pattern>
+        <include-prelude>/JSP2/aug31/common/variable.jspf</include-prelude>
+        <include-coda>/JSP2/aug31/common/footer.jspf</include-coda>
+    </jsp-property-group>
+  </jsp-config>
+  
+   <servlet>
+  	<servlet-name>JDBCDriverLoader</servlet-name>	<!-- 서블릿 이름 -->
+  	<servlet-class>aa.loader.Loader</servlet-class>
+  	<init-param>
+  		<param-name>jdbcdriver</param-name>
+  		<param-value>oracle.jdbc.driver.OracleDriver</param-value> <!-- 톰캣 구동 시 서블릿 Loader 동작. 오라클 드라이버 로딩 -->
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>DBCPInit</servlet-name>
+  	<servlet-class>aa.loader.DBCPInit</servlet-class>
+  	<init-param>
+  		<param-name>jdbcdriver</param-name>
+  		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+ 
+
+
+   
+</web-app>
